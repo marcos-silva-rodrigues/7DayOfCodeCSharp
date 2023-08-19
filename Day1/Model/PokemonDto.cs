@@ -5,17 +5,15 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace Day4.Model
+namespace Day1.Model
 {
-    public class Pokemon
+    public class PokemonDto
     {
         [property: JsonPropertyName("name")]
         public string Name { get; set; }
 
-        [property: JsonPropertyName("weight")]
-        public int Weight { get; set; }
-
-        [property: JsonPropertyName("height")]
-        public int Height { get; set; }
+        [property: JsonPropertyName("url")]
+        public string Url { get; set; }
     }
+
 }

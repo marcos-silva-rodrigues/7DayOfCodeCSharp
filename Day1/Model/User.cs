@@ -1,4 +1,5 @@
 ﻿using Day1.Model;
+using Day4.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,17 +11,17 @@ namespace Day2.Model
     public class User
     {
         public string Name { get; }
-        public List<Pokemon> Pokemons { get; }
+        public List<Pet> Pets { get; }
 
         public User(string name)
         {
             Name = name;
-            Pokemons = new List<Pokemon>();
+            Pets = new List<Pet>();
         }
 
-        public void AddPokemon(Pokemon pokemon)
+        public void AddPokemon(Pet pokemon)
         {
-            Pokemons.Add(pokemon);
+            Pets.Add(pokemon);
         }
     }
 }

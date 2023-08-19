@@ -1,6 +1,7 @@
 ﻿using Day1.Model;
 using Day1.Repository;
 using Day2.Model;
+using Day4.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace Day2.View
             return name.ToUpper();
         }
 
-        public string SelectPokemon(string name, List<Pokemon>pokemons)
+        public string SelectPokemon(string name, List<PokemonDto>pokemons)
         {
   
             Console.WriteLine($"# {name} Escolha uma espécie:");
@@ -41,31 +42,52 @@ namespace Day2.View
             }
 
             
-            Console.WriteLine("\n");
+            Console.WriteLine("");
             string option = Console.ReadLine();
             return option;
         }
 
-        public void AdoptedPokemon(string name, Pokemon pokemon)
+        public void AdoptedPokemon(string name, PokemonDto pokemon)
         {
             Console.WriteLine($"# {name} Adotou {pokemon.Name}");
-            Console.WriteLine("\n");
+            Console.WriteLine("");
         }
 
-        public void ShowAdoptedPokemon(string name, List<Pokemon> pokemons)
+        public string ShowPets(string name, List<Pet> pets)
         {
-            Console.WriteLine($"{name} já adotou {pokemons.Count} pokemons:");
-            pokemons.ForEach(poke =>
+            Console.WriteLine($"{name} já adotou {pets.Count} pokemons:");
+            Console.WriteLine($"Selecione o número do pokemon para ver seu detalhe");
+            var index = 0;
+            pets.ForEach(pet =>
             {
-                Console.WriteLine($"# {poke.Name}");
+                Console.WriteLine($"#{index + 1} {pet.Name}");
+                index++;
             });
-            Console.WriteLine("\n");
+            Console.WriteLine("#0 - Voltar ");
+            string option = Console.ReadLine();
+            return option;
         }
 
         public void ErrorMessage()
         {
             Console.WriteLine("Houve um erro, Tente novamente mais tarde!");
             Console.WriteLine("\n");
+        }
+
+        public string ShowPetDetails(string name, Pet pet)
+        {
+            Console.WriteLine($"#Nome: {pet.Name}");
+            Console.WriteLine($"#Altura: {pet.Height}");
+            Console.WriteLine($"#Peso: {pet.Weight}");
+            Console.WriteLine(pet.Sad ? "Está triste" : "Esta feliz");
+            Console.WriteLine(pet.Hunger ? "Está com fome" : "Esta sem fome");
+            Console.WriteLine($"#{name} você deseja:");
+
+            Console.WriteLine($"# 1 - Alimentar o {pet.Name}");
+            Console.WriteLine($"# 2 - Brincar com {pet.Name}");
+            Console.WriteLine($"# 3 - Sair ");
+            string option = Console.ReadLine();
+            return option;
         }
     }
 }
