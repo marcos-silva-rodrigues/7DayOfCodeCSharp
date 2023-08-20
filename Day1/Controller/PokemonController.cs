@@ -1,4 +1,5 @@
-﻿using Day1.Model;
+﻿using AutoMapper;
+using Day1.Model;
 using Day1.Repository;
 using Day2.Model;
 using Day2.View;
@@ -86,7 +87,11 @@ namespace Day2.Controller
                 StopGame();
             };
 
-            user.AddPokemon(new Pet(task2.Result));
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<Pokemon, Pet>());
+            var mapper = new Mapper(config);
+
+            var pet = mapper.Map<Pet>(task2.Result);
+            user.AddPokemon(pet);
             _view.AdoptedPokemon(user.Name, pokemon);
         }
         private void ShowPetOptions()

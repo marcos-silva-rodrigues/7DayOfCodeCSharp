@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-
-namespace Day4.Model
+﻿namespace Day4.Model
 {
     public class Pet
     {
-        private Pokemon _pokemon;
 
-        public string Name { get { return _pokemon.Name; } }
-        public int Weight { get { return _pokemon.Weight; } }
-        public int Height { get { return _pokemon.Height; } }
+        public string Name { get; set; }
+        public int Weight { get; set; }
+        public int Height { get; set; }
+
+        public Pet(int weight, string name, int height)
+        {
+            Weight = weight;
+            Name = name;
+            Height = height;
+        }
 
         private int _hunger = 5;
         private int _sad = 5;
@@ -27,13 +26,6 @@ namespace Day4.Model
         {
             get { return _hunger > 4; }
         }
-
-        public Pet(Pokemon pokemon)
-        {
-            _pokemon = pokemon;
-        }
-
-
 
         public void Food()
         {
